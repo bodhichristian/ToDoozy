@@ -53,6 +53,7 @@
 			membershipExceptions = (
 				ContentView.swift,
 				SidebarView.swift,
+				SmartListView.swift,
 				ToDoListView.swift,
 				ToDoView.swift,
 			);

@@ -8,12 +8,13 @@
 import SwiftUI
 import SwiftData
 
-struct ToDoListView: View {
-    @State var toDoList: ToDoList
+struct SmartListView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var toDos: [ToDo]
 
     var body: some View {
         List {
-            ForEach(toDoList.toDos) { toDo in
+            ForEach(toDos) { toDo in
                 ToDoView(toDo: toDo)
             }
         }
@@ -27,14 +28,15 @@ struct ToDoListView: View {
             }
         }
     }
+    
     private func newToDo() {
         withAnimation {
             let newToDo = ToDo(title: "New To-Do")
-            toDoList.toDos.append(newToDo)
+            modelContext.insert(newToDo)
         }
     }
 }
 
 #Preview {
-    ToDoListView(toDoList: ToDoList(title: "To-Do's"))
+    SmartListView()
 }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ToDoView: View {
-    @Binding var toDo: ToDo
-    @Binding var selectedToDo: ToDo?
-    @Binding var showingInspector: Bool
+    @State var toDo: ToDo
+//    @Binding var selectedToDo: ToDo?
+//    @Binding var showingInspector: Bool
     
     var body: some View {
         HStack {
@@ -26,8 +26,8 @@ struct ToDoView: View {
             TextField("New ToDo", text: $toDo.title)
             
             Button {
-                showingInspector = true
-                selectedToDo = toDo
+//                showingInspector = true
+//                selectedToDo = toDo
                 
                 
             } label: {
@@ -39,7 +39,7 @@ struct ToDoView: View {
 }
 
 #Preview {
-    ToDoView(toDo: .constant(ToDo(title: "Get a good night's sleep")), selectedToDo: .constant(ToDo(title: "Selected ToDo")), showingInspector: .constant(false))
-        .modelContainer(for: ToDo.self, inMemory: true)
+    ToDoView(toDo: ToDo(title: "Thing 1"))
+      //  .modelContainer(for: ToDo.self, inMemory: true)
     
 }

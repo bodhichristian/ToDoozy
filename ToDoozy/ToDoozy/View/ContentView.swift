@@ -11,42 +11,48 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @Query var allToDos: [ToDo]
+    //@Query var allToDos: [ToDo]
     @Query var lists: [ToDoList]
     
     @State private var selection: Collection? = nil
     @State private var query = ""
     
+    private var allToDos: [ToDo] {
+        var toDos: [ToDo] = []
+        
+        for list in lists {
+            for toDo in list.toDos {
+                toDos.append(toDo)
+            }
+        }
+        return toDos
+    }
     
     var body: some View {
         NavigationSplitView {
             SidebarView(selection: $selection)
                 .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: newToDo) {
-                            Label("Add Item", systemImage: "plus")
-                        }
-                    }
-                }
+                
                 .searchable(text: $query, placement: .sidebar)
         } detail: {
+            Group {
+                switch selection {
+                case .all:
+                    SmartListView()
+                case .complete:
+                    Text("complete")
+                case .upcoming:
+                    Text("upcoming")
+                case .userLists(let toDoList):
+                    ToDoListView(toDoList: toDoList)
+                case nil:
+                    Text("select a list")
+                }
+            }
             
         }
     }
     
-    private func newToDo() {
-        withAnimation {
-            if let selection {
-                let newToDo = ToDo(title: "New To-Do")
-            }
-            
-            let toDo = ToDo(title: "New To-Do")
-            
-            
-            modelContext.insert(toDo)
-        }
-    }
     
     private func newList() {
         withAnimation {
