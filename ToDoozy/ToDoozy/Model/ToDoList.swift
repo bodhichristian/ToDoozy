@@ -13,7 +13,7 @@ class ToDoList {
     let id = UUID()
     var dateCreated = Date()
     var title: String
-    var iconName: String = "list.bullet.rectangle"
+    var iconName: String = "list.bullet.rectangle.fill"
     var toDos: [ToDo] = []
     
     init(title: String) {

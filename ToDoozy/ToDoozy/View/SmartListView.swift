@@ -10,13 +10,16 @@ import SwiftData
 
 struct SmartListView: View {
     let type: Collection
-
+    let query: String
+    
+    @State private var selectedToDo: ToDo? = nil
+    @State var showingInspector: Bool = false
+    
     @Environment(\.modelContext) var modelContext
     @Query var toDos: [ToDo]
     
     private var smartList: [ToDo] {
         switch type {
-
         case .complete:
             return toDos.filter({$0.isComplete})
         case .upcoming:
@@ -25,13 +28,22 @@ struct SmartListView: View {
             return toDos
         }
     }
-
+    
+    private var searchResults: [ToDo] {
+        if query.isEmpty {
+            return smartList
+        } else {
+            return toDos.filter {$0.title.lowercased().contains(query)}
+        }
+    }
+    
     var body: some View {
         List {
-            ForEach(smartList) { toDo in
-                ToDoView(toDo: toDo)
+            ForEach(searchResults, id: \.id) { toDo in
+                ToDoView(toDo: toDo, selectedToDo: $selectedToDo, showingInspector: $showingInspector)
             }
         }
+        .navigationTitle(type.displayName)
         .toolbar {
             ToolbarItem {
                 Button {
@@ -39,7 +51,21 @@ struct SmartListView: View {
                 } label: {
                     Label("Add Item", systemImage: "plus")
                 }
+                .disabled(type != .all)
+                .opacity(type == .all ? 1 : 0)
             }
+        }
+        .inspector(isPresented: $showingInspector) {
+            Group {
+                if let selectedToDo {
+                    Text(selectedToDo.title)
+                        .font(.headline)
+                } else {
+                    Text("Select a task to view details.")
+                        .font(.headline)
+                }
+            }
+            .frame(minWidth: 100, maxWidth: .infinity)
         }
     }
     
@@ -52,5 +78,5 @@ struct SmartListView: View {
 }
 
 #Preview {
-    SmartListView(type: Collection.all)
+    SmartListView(type: .all, query: "")
 }

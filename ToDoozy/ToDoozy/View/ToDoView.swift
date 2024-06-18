@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ToDoView: View {
     @State var toDo: ToDo
-//    @Binding var selectedToDo: ToDo?
-//    @Binding var showingInspector: Bool
+    @Binding var selectedToDo: ToDo?
+    @Binding var showingInspector: Bool
     
     var body: some View {
         HStack {
@@ -26,12 +26,17 @@ struct ToDoView: View {
             TextField("New ToDo", text: $toDo.title)
             
             Button {
-//                showingInspector = true
-//                selectedToDo = toDo
+                if selectedToDo == toDo {
+                    showingInspector.toggle()
+                } else {
+                    showingInspector = true
+                    selectedToDo = toDo
+                }
+                
                 
                 
             } label: {
-                Image(systemName: "ellipsis.circle")
+                Image(systemName: "info.circle")
             }
             .buttonStyle(.plain)
         }
@@ -39,7 +44,6 @@ struct ToDoView: View {
 }
 
 #Preview {
-    ToDoView(toDo: ToDo(title: "Thing 1"))
-      //  .modelContainer(for: ToDo.self, inMemory: true)
+    ToDoView(toDo: ToDo(title: "to Do"), selectedToDo: .constant(nil), showingInspector: .constant(false))
     
 }

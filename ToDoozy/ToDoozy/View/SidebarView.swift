@@ -27,31 +27,16 @@ struct SidebarView: View {
                     Label(list.title, systemImage: list.iconName)
                         .tag(Collection.userLists(list))
                         .contextMenu {
-                            Button("Delete List", role: .destructive) {
+                            Button("New List") {
+                                addList()
+                            }
+                            Button("Delete \"\(list.title)\"", role: .destructive) {
                                 deleteList(list)
                             }
                         }
                 }
             }
-            
-            //            Section("Your Lists"){
-            //                ForEach($userLists) { $list in
-            //                    HStack {
-            //                        Image(systemName: "folder")
-            //                        TextField("New List", text: $list.title)
-            //                    }
-            //                    .tag(TaskCategory.userLists(list))
-            //                    .contextMenu(ContextMenu(menuItems: {
-            //                        Button("Delete List", role: .destructive) {
-            //                            if let index = userLists.firstIndex(where: {$0.id == list.id}) {
-            //                                userLists.remove(at: index)
-            //                            }
-            //                        }
-            //                        /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
-            //                        /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
-            //                    }))
-            //                }
-            //            }
+
         }
         .safeAreaInset(edge: .bottom) {
             Button {

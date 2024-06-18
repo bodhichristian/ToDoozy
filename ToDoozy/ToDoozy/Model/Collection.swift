@@ -27,7 +27,7 @@ enum Collection: Identifiable, CaseIterable, Hashable {
     var displayName: String {
         switch self {
         case .all:
-            "All To-Do"
+            "To-Do's"
         case .complete:
             "Complete"
         case .upcoming:
@@ -40,7 +40,7 @@ enum Collection: Identifiable, CaseIterable, Hashable {
     var iconName: String {
         switch self {
         case .all:
-            "star"
+            "checklist"
         case .complete:
             "checkmark.circle"
         case .upcoming:
