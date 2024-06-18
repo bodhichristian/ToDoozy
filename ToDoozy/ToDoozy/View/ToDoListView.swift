@@ -9,14 +9,30 @@ import SwiftUI
 import SwiftData
 
 struct ToDoListView: View {
+    let query: String
     @State var toDoList: ToDoList
     
     @State private var selectedToDo: ToDo? = nil
     @State private var showingInspector = false
-
+    
+    @Query var lists: [ToDoList]
+    
+    private var list: ToDoList {
+        return lists.first(where: {$0.id == toDoList.id})!
+    }
+    
+    private var searchResults: [ToDo] {
+        if query.isEmpty {
+            return list.toDos }
+        else {
+            return list.toDos.filter({$0.title.lowercased().contains(query.lowercased())})
+        }
+    }
+    
+    
     var body: some View {
         List {
-            ForEach(toDoList.toDos, id: \.id) { toDo in
+            ForEach(searchResults, id: \.id) { toDo in
                 ToDoView(
                     toDo: toDo,
                     selectedToDo: $selectedToDo,
@@ -32,6 +48,7 @@ struct ToDoListView: View {
                 } label: {
                     Label("Add Item", systemImage: "plus")
                 }
+                .keyboardShortcut(KeyEquivalent("n"), modifiers: [.command])
             }
         }
         .inspector(isPresented: $showingInspector) {
@@ -56,5 +73,5 @@ struct ToDoListView: View {
 }
 
 #Preview {
-    ToDoListView(toDoList: ToDoList(title: "To-Do's"))
+    ToDoListView(query: "", toDoList: ToDoList(title: "To-Do's"))
 }

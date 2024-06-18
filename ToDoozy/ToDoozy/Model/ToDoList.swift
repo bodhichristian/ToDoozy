@@ -19,4 +19,8 @@ class ToDoList {
     init(title: String) {
         self.title = title
     }
+    
+    func updateTitle(to newTitle: String) {
+        self.title = newTitle
+    }
 }

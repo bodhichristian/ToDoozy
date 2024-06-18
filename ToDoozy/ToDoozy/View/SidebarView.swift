@@ -11,7 +11,7 @@ import SwiftData
 struct SidebarView: View {
     @Binding var selection: Collection?
     @Environment(\.modelContext) private var modelContext
-    @Query private var userLists: [ToDoList]
+    @Query var lists: [ToDoList]
     
     var body: some View {
         List(selection: $selection) {
@@ -23,7 +23,7 @@ struct SidebarView: View {
             }
             
             Section("My Lists") {
-                ForEach(userLists) { list in
+                ForEach(lists, id: \.id) { list in
                     Label(list.title, systemImage: list.iconName)
                         .tag(Collection.userLists(list))
                         .contextMenu {
@@ -36,7 +36,7 @@ struct SidebarView: View {
                         }
                 }
             }
-
+            
         }
         .safeAreaInset(edge: .bottom) {
             Button {
@@ -70,11 +70,8 @@ struct SidebarView: View {
         }
     }
 }
-//
-//#Preview {
-//    SidebarView(
-//        userLists: .constant(TaskList.examples),
-//        selection: .constant(TaskCategory.all)
-//    )
-//    .listStyle(.sidebar)
-//}
+
+#Preview {
+    SidebarView(selection: .constant(nil))
+        .listStyle(.sidebar)
+}

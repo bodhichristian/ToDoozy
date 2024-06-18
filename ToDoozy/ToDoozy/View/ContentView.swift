@@ -32,7 +32,7 @@ struct ContentView: View {
             case .upcoming:
                 SmartListView(type: .upcoming, query: query)
             case .userLists(let toDoList):
-                ToDoListView(toDoList: toDoList)
+                ToDoListView(query: query, toDoList: toDoList)
             case nil:
                 Text("select a list")
             }
@@ -49,16 +49,17 @@ struct ContentView: View {
         }
     }
     
-    //    private func deleteItems(offsets: IndexSet) {
-    //        withAnimation {
-    //            for index in offsets {
-    //                modelContext.delete(toDos[index])
-    //            }
-    //        }
-    //    }
+
 }
 
 #Preview {
     ContentView()
         .modelContainer(for: ToDo.self, inMemory: true)
 }
+//    private func deleteItems(offsets: IndexSet) {
+//        withAnimation {
+//            for index in offsets {
+//                modelContext.delete(toDos[index])
+//            }
+//        }
+//    }
