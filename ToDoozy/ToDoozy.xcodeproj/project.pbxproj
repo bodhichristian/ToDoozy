@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA80EB342C20B6EB00FE2497 /* ToDoozyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */; };
-		AA80EB382C20B6EB00FE2497 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB372C20B6EB00FE2497 /* Item.swift */; };
 		AA80EB3A2C20B6ED00FE2497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA80EB392C20B6ED00FE2497 /* Assets.xcassets */; };
 		AA80EB3D2C20B6ED00FE2497 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA80EB3C2C20B6ED00FE2497 /* Preview Assets.xcassets */; };
 		AA80EB482C20B6ED00FE2497 /* ToDoozyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB472C20B6ED00FE2497 /* ToDoozyTests.swift */; };
@@ -36,7 +35,6 @@
 /* Begin PBXFileReference section */
 		AA80EB302C20B6EB00FE2497 /* ToDoozy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoozy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyApp.swift; sourceTree = "<group>"; };
-		AA80EB372C20B6EB00FE2497 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		AA80EB392C20B6ED00FE2497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA80EB3C2C20B6ED00FE2497 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA80EB3E2C20B6ED00FE2497 /* ToDoozy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoozy.entitlements; sourceTree = "<group>"; };
@@ -52,9 +50,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ContentView.swift,
-				SidebarView.swift,
-				ToDoListView.swift,
-				ToDoView.swift,
+				Sidebar/SidebarView.swift,
+				ToDo/ToDoListView.swift,
+				ToDo/ToDoView.swift,
 			);
 			target = AA80EB2F2C20B6EB00FE2497 /* ToDoozy */;
 		};
@@ -125,7 +123,6 @@
 				AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */,
 				AA80EB602C20BC3E00FE2497 /* Model */,
 				AA80EB622C20BC4C00FE2497 /* View */,
-				AA80EB372C20B6EB00FE2497 /* Item.swift */,
 				AA80EB392C20B6ED00FE2497 /* Assets.xcassets */,
 				AA80EB3E2C20B6ED00FE2497 /* ToDoozy.entitlements */,
 				AA80EB3B2C20B6ED00FE2497 /* Preview Content */,
@@ -288,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA80EB382C20B6EB00FE2497 /* Item.swift in Sources */,
 				AA80EB342C20B6EB00FE2497 /* ToDoozyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

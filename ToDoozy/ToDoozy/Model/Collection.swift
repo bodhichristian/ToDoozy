@@ -44,7 +44,7 @@ enum Collection: Identifiable, CaseIterable, Hashable {
         case .complete:
             "checkmark.circle"
         case .upcoming:
-            "calendar"
+            "calendar.badge.clock"
         case .userLists(let toDoList):
             toDoList.iconName
         }

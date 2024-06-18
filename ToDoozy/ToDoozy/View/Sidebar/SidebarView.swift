@@ -43,7 +43,7 @@ struct SidebarView: View {
                 if creatingNewList {
                     HStack {
                         Image(systemName: "list.bullet.circle.fill")
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.blue)
                             .offset(x: 3)
                         TextField("New List", text: $newListTitle)
                             .textFieldStyle(.plain)
