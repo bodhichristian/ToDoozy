@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ToDoView: View {
-    @State var toDo: ToDo
+    @Environment(\.modelContext) var modelContext
+    @Bindable var toDo: ToDo
+    
     @Binding var selectedToDo: ToDo?
     @Binding var showingInspector: Bool
     
+    @FocusState var editingToDo
+        
     var body: some View {
         HStack {
             Image(
@@ -20,10 +24,14 @@ struct ToDoView: View {
                 : "circle"
             )
             .onTapGesture {
-                toDo.isComplete.toggle()
+                withAnimation{
+                    toDo.isComplete.toggle()
+                }
             }
             
-            TextField("New ToDo", text: $toDo.title)
+            TextField("New To-Do", text: $toDo.title)
+                .focused($editingToDo)
+                
             
             Button {
                 if selectedToDo == toDo {
@@ -32,13 +40,15 @@ struct ToDoView: View {
                     showingInspector = true
                     selectedToDo = toDo
                 }
-                
-                
-                
             } label: {
                 Image(systemName: "info.circle")
             }
             .buttonStyle(.plain)
+        }
+        .contextMenu {
+            Button("Delete \"\(toDo.title)\"") {
+                modelContext.delete(toDo)
+            }
         }
     }
 }

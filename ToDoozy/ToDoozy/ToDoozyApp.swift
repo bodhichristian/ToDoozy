@@ -15,7 +15,11 @@ struct ToDoozyApp: App {
             ToDo.self,
             ToDoList.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false
+        )
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -29,5 +33,22 @@ struct ToDoozyApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        
+        WindowGroup("Task") {
+            Text("Form")
+        }
+        .windowStyle(.hiddenTitleBar)
+        
+        Settings {
+            Text("Settings")
+                .frame(minWidth: 150, minHeight: 100)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        
+        MenuBarExtra("Menu") {
+            Button("Do something") {
+                
+            }
+        }
     }
 }

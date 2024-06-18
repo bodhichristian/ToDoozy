@@ -11,9 +11,7 @@ import SwiftData
 struct ToDoListView: View {
     let query: String
     let selectedList: Collection?
-    
-    //@State var toDoList: ToDoList
-    
+        
     @State private var selectedToDo: ToDo? = nil
     @State private var showingInspector = false
     
@@ -21,22 +19,25 @@ struct ToDoListView: View {
     @Query var toDos: [ToDo]
     
     private var displayToDos: [ToDo] {
-        switch selectedList {
-        case .all:
-            return toDos
-        case .complete:
-            return toDos.filter({$0.isComplete})
-        case .upcoming:
-            return toDos.filter({$0.dueDate ?? Date() > Date()})
-        case .userLists(let toDoList):
-            return lists.first(where: {$0.id == toDoList.id})?.toDos ?? []
-        case nil:
-            return toDos
+        if query.isEmpty {
+            switch selectedList {
+            case .all:
+                return toDos
+            case .complete:
+                return toDos.filter({$0.isComplete})
+            case .upcoming:
+                return toDos.filter({$0.dueDate ?? Date() > Date()})
+            case .userLists(let toDoList):
+                return lists.first(where: {$0.id == toDoList.id})?.toDos ?? []
+            case nil:
+                return toDos
+            }
+        } else {
+            return toDos.filter({$0.title.contains(query)})
         }
     }
     var body: some View {
         List {
-
             ForEach(displayToDos, id: \.id) { toDo in
                 ToDoView(
                     toDo: toDo,
@@ -45,7 +46,7 @@ struct ToDoListView: View {
                 )
             }
         }
-        .navigationTitle(selectedList?.displayName ?? "")
+        .navigationTitle(query.isEmpty ? selectedList?.displayName ?? "" : "Search Results")
         .inspector(isPresented: $showingInspector) {
             Group {
                 if let selectedToDo {
@@ -59,7 +60,6 @@ struct ToDoListView: View {
             .frame(minWidth: 100, maxWidth: .infinity)
         }
     }
-
 }
 
 #Preview {

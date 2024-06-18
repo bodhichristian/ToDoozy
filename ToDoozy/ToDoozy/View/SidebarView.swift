@@ -13,6 +13,10 @@ struct SidebarView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var lists: [ToDoList]
     
+    @FocusState private var titleFieldFocused
+    @State private var creatingNewList = false
+    @State private var newListTitle = "New List"
+    
     var body: some View {
         List(selection: $selection) {
             Section  {
@@ -28,19 +32,35 @@ struct SidebarView: View {
                         .tag(Collection.userLists(list))
                         .contextMenu {
                             Button("New List") {
-                                addList()
+                                draftNewList()
                             }
                             Button("Delete \"\(list.title)\"", role: .destructive) {
                                 deleteList(list)
                             }
                         }
                 }
+                
+                if creatingNewList {
+                    HStack {
+                        Image(systemName: "list.bullet.circle.fill")
+                            .foregroundStyle(.secondary)
+                            .offset(x: 3)
+                        TextField("New List", text: $newListTitle)
+                            .textFieldStyle(.plain)
+                            .focused($titleFieldFocused)
+                            .offset(x: 1)
+                    }
+                    .onChange(of: titleFieldFocused) {
+                        if !titleFieldFocused {
+                            addList()
+                        }
+                    }
+                }
             }
-            
         }
         .safeAreaInset(edge: .bottom) {
             Button {
-                addList()
+                draftNewList()
             } label: {
                 HStack(spacing: 4) {
                     Image(systemName: "plus.circle")
@@ -59,9 +79,21 @@ struct SidebarView: View {
         }
     }
     
+    func draftNewList() {
+        withAnimation{
+            creatingNewList = true
+            titleFieldFocused = true
+        }
+    }
+    
     func addList() {
-        let newList = ToDoList(title: "New List")
-        modelContext.insert(newList)
+
+        withAnimation{
+            let newList = ToDoList(title: newListTitle)
+            modelContext.insert(newList)
+            creatingNewList = false
+            newListTitle = "New List"
+        }
     }
     
     private func deleteList(_ list: ToDoList) {
