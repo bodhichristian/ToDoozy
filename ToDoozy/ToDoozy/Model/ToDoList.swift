@@ -10,17 +10,17 @@ import SwiftData
 
 @Model
 class ToDoList {
-    let id = UUID()
-    var dateCreated = Date()
+    var id: UUID
+    var dateCreated: Date
     var title: String
-    var iconName: String = "list.bullet.rectangle.fill"
-    var toDos: [ToDo] = []
+    var iconName: String
+    @Relationship(deleteRule: .cascade, inverse: \ToDo.list) var toDos: [ToDo] = []
     
     init(title: String) {
+        self.id = UUID()
+        self.dateCreated = Date()
         self.title = title
-    }
-    
-    func updateTitle(to newTitle: String) {
-        self.title = newTitle
+        self.iconName = "list.bullet.circle.fill"
+        self.toDos = []
     }
 }

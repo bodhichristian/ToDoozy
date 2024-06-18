@@ -10,29 +10,34 @@ import SwiftData
 
 struct ToDoListView: View {
     let query: String
-    @State var toDoList: ToDoList
+    let selectedList: Collection?
+    
+    //@State var toDoList: ToDoList
     
     @State private var selectedToDo: ToDo? = nil
     @State private var showingInspector = false
     
     @Query var lists: [ToDoList]
+    @Query var toDos: [ToDo]
     
-    private var list: ToDoList {
-        return lists.first(where: {$0.id == toDoList.id})!
-    }
-    
-    private var searchResults: [ToDo] {
-        if query.isEmpty {
-            return list.toDos }
-        else {
-            return list.toDos.filter({$0.title.lowercased().contains(query.lowercased())})
+    private var displayToDos: [ToDo] {
+        switch selectedList {
+        case .all:
+            return toDos
+        case .complete:
+            return toDos.filter({$0.isComplete})
+        case .upcoming:
+            return toDos.filter({$0.dueDate ?? Date() > Date()})
+        case .userLists(let toDoList):
+            return lists.first(where: {$0.id == toDoList.id})?.toDos ?? []
+        case nil:
+            return toDos
         }
     }
-    
-    
     var body: some View {
         List {
-            ForEach(searchResults, id: \.id) { toDo in
+
+            ForEach(displayToDos, id: \.id) { toDo in
                 ToDoView(
                     toDo: toDo,
                     selectedToDo: $selectedToDo,
@@ -40,17 +45,7 @@ struct ToDoListView: View {
                 )
             }
         }
-        .navigationTitle(toDoList.title)
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    newToDo()
-                } label: {
-                    Label("Add Item", systemImage: "plus")
-                }
-                .keyboardShortcut(KeyEquivalent("n"), modifiers: [.command])
-            }
-        }
+        .navigationTitle(selectedList?.displayName ?? "")
         .inspector(isPresented: $showingInspector) {
             Group {
                 if let selectedToDo {
@@ -64,14 +59,9 @@ struct ToDoListView: View {
             .frame(minWidth: 100, maxWidth: .infinity)
         }
     }
-    private func newToDo() {
-        withAnimation {
-            let newToDo = ToDo(title: "New To-Do")
-            toDoList.toDos.append(newToDo)
-        }
-    }
+
 }
 
 #Preview {
-    ToDoListView(query: "", toDoList: ToDoList(title: "To-Do's"))
+    ToDoListView(query: "", selectedList: nil)
 }

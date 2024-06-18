@@ -14,29 +14,28 @@ struct ContentView: View {
     @Query var lists: [ToDoList]
     //@Query var allToDos: [ToDo]
     
-    @State private var selection: Collection? = nil
+    @State private var selectedList: Collection? = nil
     @State private var query = ""
     
     var body: some View {
         NavigationSplitView {
-            SidebarView(selection: $selection)
+            SidebarView(selection: $selectedList)
                 .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             
                 .searchable(text: $query, placement: .sidebar)
         } detail: {
-            switch selection {
-            case .all:
-                SmartListView(type: .all, query: query)
-            case .complete:
-                SmartListView(type: .complete, query: query)
-            case .upcoming:
-                SmartListView(type: .upcoming, query: query)
-            case .userLists(let toDoList):
-                ToDoListView(query: query, toDoList: toDoList)
-            case nil:
-                Text("select a list")
-            }
+            ToDoListView(query: query, selectedList: selectedList)
             
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    newToDo()
+                } label: {
+                    Label("Add Item", systemImage: "plus")
+                }
+                .keyboardShortcut(KeyEquivalent("n"), modifiers: [.command])
+            }
         }
     }
     
@@ -49,6 +48,19 @@ struct ContentView: View {
         }
     }
     
+    private func newToDo() {
+        withAnimation {
+            let newToDo = ToDo(title: "New To-Do")
+            
+            switch selectedList {
+            case .all, .complete, .upcoming, nil:
+                modelContext.insert(newToDo)
+            case .userLists(let toDoList):
+                toDoList.toDos.append(newToDo)
+
+            }
+        }
+    }
 
 }
 
