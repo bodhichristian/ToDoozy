@@ -9,12 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct SmartListView: View {
+    let type: Collection
+
     @Environment(\.modelContext) var modelContext
     @Query var toDos: [ToDo]
+    
+    private var smartList: [ToDo] {
+        switch type {
+
+        case .complete:
+            return toDos.filter({$0.isComplete})
+        case .upcoming:
+            return toDos.filter({$0.dueDate ?? Date() > Date()})
+        default:
+            return toDos
+        }
+    }
 
     var body: some View {
         List {
-            ForEach(toDos) { toDo in
+            ForEach(smartList) { toDo in
                 ToDoView(toDo: toDo)
             }
         }
@@ -38,5 +52,5 @@ struct SmartListView: View {
 }
 
 #Preview {
-    SmartListView()
+    SmartListView(type: Collection.all)
 }

@@ -11,22 +11,10 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
-    //@Query var allToDos: [ToDo]
     @Query var lists: [ToDoList]
     
     @State private var selection: Collection? = nil
     @State private var query = ""
-    
-    private var allToDos: [ToDo] {
-        var toDos: [ToDo] = []
-        
-        for list in lists {
-            for toDo in list.toDos {
-                toDos.append(toDo)
-            }
-        }
-        return toDos
-    }
     
     var body: some View {
         NavigationSplitView {
@@ -38,11 +26,11 @@ struct ContentView: View {
             Group {
                 switch selection {
                 case .all:
-                    SmartListView()
+                    SmartListView(type: .all)
                 case .complete:
-                    Text("complete")
+                    SmartListView(type: .complete)
                 case .upcoming:
-                    Text("upcoming")
+                    SmartListView(type: .upcoming)
                 case .userLists(let toDoList):
                     ToDoListView(toDoList: toDoList)
                 case nil:
