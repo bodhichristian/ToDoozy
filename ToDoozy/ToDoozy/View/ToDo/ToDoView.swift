@@ -25,6 +25,7 @@ struct ToDoView: View {
             )
             .onTapGesture {
                 toDo.isComplete.toggle()
+                selectedToDo = toDo
             }
             
             TextField("New To-Do", text: $toDo.title)
