@@ -15,7 +15,7 @@ struct ToDoView: View {
     @Binding var showingInspector: Bool
     
     @FocusState var editingToDo
-        
+    
     var body: some View {
         HStack {
             Image(
@@ -24,14 +24,12 @@ struct ToDoView: View {
                 : "circle"
             )
             .onTapGesture {
-                withAnimation{
-                    toDo.isComplete.toggle()
-                }
+                toDo.isComplete.toggle()
             }
             
             TextField("New To-Do", text: $toDo.title)
                 .focused($editingToDo)
-                
+            
             
             Button {
                 if selectedToDo == toDo {
