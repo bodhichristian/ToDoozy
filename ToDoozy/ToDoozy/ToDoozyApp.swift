@@ -12,7 +12,7 @@ import SwiftData
 struct ToDoozyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            ToDo.self,
+            ToDoozy.self,
             ToDoList.self
         ])
         
@@ -24,7 +24,7 @@ struct ToDoozyApp: App {
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("Could not create ModelContainer: \(error.localizedDescription)")
         }
     }()
 

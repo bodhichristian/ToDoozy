@@ -49,8 +49,10 @@
 		AA80EB632C20BC5900FE2497 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Components/TDButtonLabel.swift,
 				ContentView.swift,
 				Sidebar/SidebarView.swift,
+				ToDo/ToDoDetailView.swift,
 				ToDo/ToDoListView.swift,
 				ToDo/ToDoView.swift,
 			);
@@ -60,8 +62,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Collection.swift,
-				ToDo.swift,
 				ToDoList.swift,
+				ToDoozy.swift,
 			);
 			target = AA80EB2F2C20B6EB00FE2497 /* ToDoozy */;
 		};

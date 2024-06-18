@@ -14,7 +14,7 @@ class ToDoList {
     var dateCreated: Date
     var title: String
     var iconName: String
-    @Relationship(deleteRule: .cascade, inverse: \ToDo.list) var toDos: [ToDo] = []
+    @Relationship(deleteRule: .cascade, inverse: \ToDoozy.list) var toDos: [ToDoozy] = []
     
     init(title: String) {
         self.id = UUID()

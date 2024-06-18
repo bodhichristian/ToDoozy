@@ -12,13 +12,13 @@ struct ToDoListView: View {
     let query: String
     let selectedList: Collection?
         
-    @State private var selectedToDo: ToDo? = nil
+    @State private var selectedToDo: ToDoozy? = nil
     @State private var showingInspector = false
     
     @Query var lists: [ToDoList]
-    @Query var toDos: [ToDo]
+    @Query var toDos: [ToDoozy]
     
-    private var displayToDos: [ToDo] {
+    private var displayToDos: [ToDoozy] {
         if query.isEmpty {
             switch selectedList {
             case .all:
@@ -50,14 +50,15 @@ struct ToDoListView: View {
         .inspector(isPresented: $showingInspector) {
             Group {
                 if let selectedToDo {
-                    Text(selectedToDo.title)
-                        .font(.headline)
+                    ToDoDetailView(toDo: toDos.first(where: {$0.id == selectedToDo.id}) ?? ToDoozy(title: ""))
                 } else {
                     Text("Select a task to view details.")
                         .font(.headline)
                 }
             }
-            .frame(minWidth: 100, maxWidth: .infinity)
+            //.frame(minWidth: 100, maxWidth: .infinity)
+            .inspectorColumnWidth(min: 250, ideal: 350, max: 800)
+
         }
     }
 }

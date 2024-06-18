@@ -62,18 +62,15 @@ struct SidebarView: View {
             Button {
                 draftNewList()
             } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "plus.circle")
-                    
-                    Text("New List")
-                }
-                .font(.headline)
-                .fontWeight(.medium)
+                TDButtonLabel(
+                    symbolName: "plus.circle",
+                    label: "New List"
+                )
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             }
             .keyboardShortcut(KeyEquivalent("n"), modifiers: [.shift, .command])
-            .buttonStyle(.borderless)
             .foregroundStyle(.blue)
+            .buttonStyle(.borderless)
             .padding(.leading, 12)
             .padding(.bottom, 8)
         }

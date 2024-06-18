@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ToDoView: View {
     @Environment(\.modelContext) var modelContext
-    @Bindable var toDo: ToDo
+    @Bindable var toDo: ToDoozy
     
-    @Binding var selectedToDo: ToDo?
+    @Binding var selectedToDo: ToDoozy?
     @Binding var showingInspector: Bool
     
     @FocusState var editingToDo
@@ -54,6 +54,6 @@ struct ToDoView: View {
 }
 
 #Preview {
-    ToDoView(toDo: ToDo(title: "to Do"), selectedToDo: .constant(nil), showingInspector: .constant(false))
+    ToDoView(toDo: ToDoozy(title: "to Do"), selectedToDo: .constant(nil), showingInspector: .constant(false))
     
 }
