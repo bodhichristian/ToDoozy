@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class ToDoozy {
+class ToDo {
     var id: UUID
     var dateCreated: Date
     var title: String

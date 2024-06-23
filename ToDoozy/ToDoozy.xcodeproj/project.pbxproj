@@ -62,8 +62,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Collection.swift,
+				ToDo.swift,
 				ToDoList.swift,
-				ToDoozy.swift,
 			);
 			target = AA80EB2F2C20B6EB00FE2497 /* ToDoozy */;
 		};

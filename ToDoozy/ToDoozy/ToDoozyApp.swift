@@ -12,7 +12,7 @@ import SwiftData
 struct ToDoozyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            ToDoozy.self,
+            ToDo.self,
             ToDoList.self
         ])
         

@@ -36,7 +36,7 @@ struct ContentView: View {
     
     private func addToDo() {
         withAnimation {
-            let newToDo = ToDoozy(title: "New To-Do")
+            let newToDo = ToDo(title: "New To-Do")
             
             switch selectedList {
             case .all, .complete, .upcoming, nil:
@@ -51,5 +51,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: ToDoozy.self, inMemory: true)
+        .modelContainer(for: ToDo.self, inMemory: true)
 }

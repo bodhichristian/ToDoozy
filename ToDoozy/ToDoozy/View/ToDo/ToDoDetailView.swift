@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToDoDetailView: View {
-    @Bindable var toDo: ToDoozy
+    @Bindable var toDo: ToDo
     
     @State private var showingDeleteAlert = false
     
@@ -18,6 +18,7 @@ struct ToDoDetailView: View {
             ScrollView{
                 TextField("To-Do Title", text: $toDo.title, axis: .vertical)
                     .textFieldStyle(.plain)
+                    .lineLimit(3)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                 
@@ -78,7 +79,7 @@ struct ToDoDetailView: View {
     }
     .inspector(isPresented: .constant(true)){
         ToDoDetailView(
-            toDo: ToDoozy(
+            toDo: ToDo(
                 title: "Unload the dishwasher",
                 dueDate: Date() + 2000,
                 details: "Don't forget this time, you silly goose.",

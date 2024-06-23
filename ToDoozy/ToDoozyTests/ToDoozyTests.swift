@@ -10,8 +10,15 @@ import Testing
 
 struct ToDoozyTests {
 
-    @Test func testExample() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test func toDoModelInit() {
+        let title = "New To-Do"
+        let toDo = ToDo(title: title)
+        
+        #expect(toDo.title == title)
+        #expect(toDo.isComplete == false)
+        #expect(toDo.dueDate == nil)
+        #expect(toDo.dateCreated != nil)
+        #expect(toDo.list == nil)
+        #expect(toDo.details.isEmpty)
     }
-
 }
