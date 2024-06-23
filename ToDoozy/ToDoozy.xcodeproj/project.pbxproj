@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA16EF6F2C28BB8D00EF14C7 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16EF6E2C28BB8D00EF14C7 /* ToDoListTests.swift */; };
 		AA80EB342C20B6EB00FE2497 /* ToDoozyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */; };
 		AA80EB3A2C20B6ED00FE2497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA80EB392C20B6ED00FE2497 /* Assets.xcassets */; };
 		AA80EB3D2C20B6ED00FE2497 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA80EB3C2C20B6ED00FE2497 /* Preview Assets.xcassets */; };
-		AA80EB482C20B6ED00FE2497 /* ToDoozyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB472C20B6ED00FE2497 /* ToDoozyTests.swift */; };
+		AA80EB482C20B6ED00FE2497 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB472C20B6ED00FE2497 /* ToDoTests.swift */; };
 		AA80EB522C20B6ED00FE2497 /* ToDoozyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB512C20B6ED00FE2497 /* ToDoozyUITests.swift */; };
 		AA80EB542C20B6ED00FE2497 /* ToDoozyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB532C20B6ED00FE2497 /* ToDoozyUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -33,13 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA16EF6E2C28BB8D00EF14C7 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		AA80EB302C20B6EB00FE2497 /* ToDoozy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoozy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyApp.swift; sourceTree = "<group>"; };
 		AA80EB392C20B6ED00FE2497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA80EB3C2C20B6ED00FE2497 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA80EB3E2C20B6ED00FE2497 /* ToDoozy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoozy.entitlements; sourceTree = "<group>"; };
 		AA80EB432C20B6ED00FE2497 /* ToDoozyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoozyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA80EB472C20B6ED00FE2497 /* ToDoozyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyTests.swift; sourceTree = "<group>"; };
+		AA80EB472C20B6ED00FE2497 /* ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTests.swift; sourceTree = "<group>"; };
 		AA80EB4D2C20B6ED00FE2497 /* ToDoozyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoozyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80EB512C20B6ED00FE2497 /* ToDoozyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyUITests.swift; sourceTree = "<group>"; };
 		AA80EB532C20B6ED00FE2497 /* ToDoozyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -143,7 +145,8 @@
 		AA80EB462C20B6ED00FE2497 /* ToDoozyTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA80EB472C20B6ED00FE2497 /* ToDoozyTests.swift */,
+				AA80EB472C20B6ED00FE2497 /* ToDoTests.swift */,
+				AA16EF6E2C28BB8D00EF14C7 /* ToDoListTests.swift */,
 			);
 			path = ToDoozyTests;
 			sourceTree = "<group>";
@@ -295,7 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA80EB482C20B6ED00FE2497 /* ToDoozyTests.swift in Sources */,
+				AA80EB482C20B6ED00FE2497 /* ToDoTests.swift in Sources */,
+				AA16EF6F2C28BB8D00EF14C7 /* ToDoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
