@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0D85162C2B3E9700AEF370 /* ScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D85152C2B3E9700AEF370 /* ScreenProtocol.swift */; };
+		AA0D85182C2B3EE300AEF370 /* XCTest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D85172C2B3ED300AEF370 /* XCTest+.swift */; };
+		AA0D851A2C2B408F00AEF370 /* MainWindowScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D85192C2B408F00AEF370 /* MainWindowScreen.swift */; };
 		AA16EF6F2C28BB8D00EF14C7 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16EF6E2C28BB8D00EF14C7 /* ToDoListTests.swift */; };
 		AA80EB342C20B6EB00FE2497 /* ToDoozyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */; };
 		AA80EB3A2C20B6ED00FE2497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA80EB392C20B6ED00FE2497 /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA0D85152C2B3E9700AEF370 /* ScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenProtocol.swift; sourceTree = "<group>"; };
+		AA0D85172C2B3ED300AEF370 /* XCTest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+.swift"; sourceTree = "<group>"; };
+		AA0D85192C2B408F00AEF370 /* MainWindowScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowScreen.swift; sourceTree = "<group>"; };
 		AA16EF6E2C28BB8D00EF14C7 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		AA80EB302C20B6EB00FE2497 /* ToDoozy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoozy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80EB332C20B6EB00FE2497 /* ToDoozyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoozyApp.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 		AA80EB502C20B6ED00FE2497 /* ToDoozyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				AA0D85172C2B3ED300AEF370 /* XCTest+.swift */,
+				AA0D85152C2B3E9700AEF370 /* ScreenProtocol.swift */,
+				AA0D85192C2B408F00AEF370 /* MainWindowScreen.swift */,
 				AA80EB512C20B6ED00FE2497 /* ToDoozyUITests.swift */,
 				AA80EB532C20B6ED00FE2497 /* ToDoozyUITestsLaunchTests.swift */,
 			);
@@ -308,7 +317,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA80EB522C20B6ED00FE2497 /* ToDoozyUITests.swift in Sources */,
+				AA0D85162C2B3E9700AEF370 /* ScreenProtocol.swift in Sources */,
+				AA0D85182C2B3EE300AEF370 /* XCTest+.swift in Sources */,
 				AA80EB542C20B6ED00FE2497 /* ToDoozyUITestsLaunchTests.swift in Sources */,
+				AA0D851A2C2B408F00AEF370 /* MainWindowScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
